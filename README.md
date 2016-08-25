@@ -1,5 +1,4 @@
 # DataStructureAndAlgorithm
-##实现c++标准模板库STL(implement the c++ STL)
 ###Author : yqtao
 ###https://github.com/yqtaowhu
 
