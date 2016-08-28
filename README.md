@@ -1,9 +1,22 @@
 # DataStructureAndAlgorithm
-###Author : yqtao
-###https://github.com/yqtaowhu
 
-### 1. vector容器的实现(vector implement)
-    包括(include):
-    构造函数：vector(),vector(n),vector(n,value)等，包含了各种构造函数。
-    push_back(),pop_back(),front(),back();
-    insert，erase类函数的实现。
+A library containing some data structures and algorithms written in c/c++.
+
+## Data Structure
+
+| Name |Source| Comment |
+| ---- | -----| ------- |
+|vector |[myVector.h](./vector/myVector.h) [myVector.cpp](./vector/myVector.cpp)|implement C++ STL vector |
+|Trie tree |[Trie.cpp](./trieTree/Trie.cpp) | implement trie tree |
+
+## Algorithm
+
+| Name | Comment |
+| ---- | ------- |
+|Sorting Algorithm |classic sorting algorithms |
+
+## License
+
+Copyright 2016 yqtao
+
+
