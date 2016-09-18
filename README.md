@@ -18,6 +18,7 @@ A library containing some data structures and algorithms written in c/c++.
 | Name | Source |Comment |
 | ---- | -------|------- |
 |Sorting Algorithm | [mySort.h](./sort/mySort.h)  [mySort_Demo](./sort/mySort_Demo.cpp)| classic sorting algorithms |
+|KMP | [kmp.cpp](./KMP/kmp.cpp) | the classic string matching algorithm |
 
 ## License
 
