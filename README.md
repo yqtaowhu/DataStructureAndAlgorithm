@@ -10,7 +10,7 @@ A library containing some data structures and algorithms written in c/c++.
 |LinkList|[LinkList.h](./LinkList/LinkList.h) [LinkList_Demo](./LinkList/LinkList_Demo.cpp)| implement a single list|
 |Binary Search Tree|[binarySearchTree.h](./binarySearchTree/binarySearchTree.h) [binarySearchTree_Demo.cpp](./binarySearchTree/binarySearchTree_Demo.cpp)|implement binarySearchTree|
 |Trie tree |[Trie.cpp](./trieTree/Trie.cpp) | implement trie tree |
-|Graph| [Graph.h](./Graph/Graph.H)  [Graph_Demo.cpp](./Graph/Graph_Demo.cpp) | implement graph structures |
+|Graph| [Graph.h](./Graph/Graph.h)  [Graph_Demo.cpp](./Graph/Graph_Demo.cpp) | implement graph structures |
 |Polynomial| [PolyAdd.h](./PolyAdd/PolyAdd.h) [PolyAdd_Demo.cpp](./PolyAdd/PolyAdd_Demo.cpp)| solve add two polynomial problems|  
 
 
@@ -19,6 +19,7 @@ A library containing some data structures and algorithms written in c/c++.
 | Name | Source |Comment |
 | ---- | -------|------- |
 |Sorting Algorithm | [mySort.h](./sort/mySort.h)  [mySort_Demo](./sort/mySort_Demo.cpp)| classic sorting algorithms |
+|Search Algorithm| [Search.cpp](./Search/Search.cpp)  | include breadth-first search and depth-first search with some examples|
 |KMP | [kmp.cpp](./KMP/kmp.cpp) | the classic string matching algorithm |
 
 ## License
