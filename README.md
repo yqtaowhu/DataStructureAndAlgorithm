@@ -20,6 +20,7 @@ A library containing some data structures and algorithms written in c/c++.
 | ---- | -------|------- |
 |Sorting Algorithm | [mySort.h](./sort/mySort.h)  [mySort_Demo](./sort/mySort_Demo.cpp)| classic sorting algorithms |
 |Search Algorithm| [Search.cpp](./Search/Search.cpp)  | include breadth-first search and depth-first search with some examples|
+|Shortest Algorithm| [Floyed-Warshall.cpp](./ShortestPaths/Floyed-Warshall.cpp) [Dijkstra.cpp](./ShortestPaths/Dijkstra.cpp) [Bellman-Ford.cpp](./ShortestPaths/Dijkstra.cpp) | some shortest paths algorithm|
 |KMP | [kmp.cpp](./KMP/kmp.cpp) | the classic string matching algorithm |
 
 ## License
