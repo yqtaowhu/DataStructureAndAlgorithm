@@ -53,4 +53,37 @@ int main() {
 		cout << endl;
 	}
 }
-
+/*
+  一个实例：
+  http://hihocoder.com/problemset/problem/1089?sid=943791
+*/
+#include<iostream>
+#include<vector>
+using namespace std;
+int n, m;  //n顶点
+const int inf = 10010;
+int main() {
+	cin >> n >> m;
+	vector<vector<int>> map(n + 1, vector<int>(n + 1, 0));
+	for (int i = 1; i <= n; i++)
+		for (int j = 1; j <= n; j++)
+			if (i != j) map[i][j] = inf;
+	for (int i = 1; i <= m; i++) {
+		int a, b, c;
+		cin >> a >> b >> c;
+		if (map[a][b]>c)
+			map[a][b] = map[b][a] = c;
+	}
+	//核心语句
+	for (int k = 1; k <= n; k++)
+		for (int i = 1; i <= n; i++)
+			for (int j = 1; j <= n; j++)
+				if (map[i][j]>map[i][k] + map[k][j])
+					map[i][j] = map[i][k] + map[k][j];
+	//输出
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++)
+			cout << map[i][j] << " ";
+		cout << endl;
+	}
+}
