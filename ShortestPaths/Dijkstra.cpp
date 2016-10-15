@@ -67,3 +67,55 @@ int main() {
 		cout << dis[i] << " ";
 	cout << endl;
 }
+
+/*
+  一个实例：http://hihocoder.com/problemset/problem/1081
+*/
+#include<iostream>
+#include<vector>
+using namespace std;
+const int n_max = 10010;
+const int inf = 1 << 30;
+int n, m, s, t, u;
+//这里声明全局变量会超出内存限制，要注意
+//vector<vector<int>> map(n_max, vector<int>(n_max, inf));
+vector<int> Dijkstra(vector<vector<int>>&map, int s) {          //s为入口
+	vector<int> dis(n + 1, inf);
+	vector<int> book(n + 1, 0);
+	for (int i = 1; i <= n; i++)        //初始化dis矩阵
+		dis[i] = map[s][i];
+	dis[s] = 0;
+	book[s] = 1;
+	for (int i = 1; i <= n - 1; i++) {   //n-1次边的松弛
+		int min = inf;
+		//找一个最近点
+		for (int j = 1; j <= n; j++) {
+			if (book[j] == 0 && dis[j] < min) {
+				min = dis[j];
+				u = j;         //记录位置点
+			}
+		}
+		if (min == inf) break;
+		book[u] = 1;           //已经确认的从s到u最近点
+		for (int v = 1; v <= n; v++) {       //每个与u相近的点v
+			if (map[u][v] < inf) {
+				if (dis[v] > dis[u] + map[u][v] && book[v] == 0)    //即尝试看能否经过u中转得到更小的距离
+					dis[v] = dis[u] + map[u][v];
+			}
+		}
+	}
+	return dis;
+}
+int main() {
+	cin >> n >> m >> s >> t;
+	vector<vector<int>> map(n + 1, vector<int>(n + 1, inf));
+	for (int i = 1; i <= m; i++) {    //注意m是边,n是顶点
+		int a, b, c;
+		cin >> a >> b >> c;
+		if (c < map[a][b])          //特别注意选择最小的路径
+			map[a][b] = map[b][a] = c;
+	}
+	vector<int>dis = Dijkstra(map, s);
+	cout << dis[t] << endl;
+	return 0;
+}
