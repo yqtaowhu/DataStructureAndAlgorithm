@@ -6,22 +6,23 @@ A library containing some data structures and algorithms written in c/c++.
 
 | Name |Source| Comment |
 | ---- | -----| ------- |
-|vector |[myVector.h](./vector/myVector.h) [myVector.cpp](./vector/myVector_Demo.cpp)|implement C++ STL vector |
-|LinkList|[LinkList.h](./LinkList/LinkList.h) [LinkList_Demo](./LinkList/LinkList_Demo.cpp)| implement a single list|
-|Binary Search Tree|[binarySearchTree.h](./binarySearchTree/binarySearchTree.h) [binarySearchTree_Demo.cpp](./binarySearchTree/binarySearchTree_Demo.cpp)|implement binarySearchTree|
-|Trie tree |[Trie.cpp](./trieTree/Trie.cpp) | implement trie tree |
-|Graph| [Graph.h](./Graph/Graph.h)  [Graph_Demo.cpp](./Graph/Graph_Demo.cpp) | implement graph structures |
-|Polynomial| [PolyAdd.h](./PolyAdd/PolyAdd.h) [PolyAdd_Demo.cpp](./PolyAdd/PolyAdd_Demo.cpp)| solve add two polynomial problems|  
+|vector |[myVector.h](./DataStructure/vector/myVector.h) [myVector.cpp](./DataStructure/vector/myVector_Demo.cpp)|implement C++ STL vector |
+|LinkList|[LinkList.h](./DataStructure/LinkList/LinkList.h) [LinkList_Demo](./DataStructure/LinkList/LinkList_Demo.cpp)| implement a single list|
+|Binary Search Tree|[binarySearchTree.h](./DataStructure/binarySearchTree/binarySearchTree.h) [binarySearchTree_Demo.cpp](./DataStructure/binarySearchTree/binarySearchTree_Demo.cpp)|implement binarySearchTree|
+|Trie tree |[Trie.cpp](./DataStructure/trieTree/Trie.cpp) | implement trie tree |
+|Graph| [Graph.h](./DataStructure/Graph/Graph.h)  [Graph_Demo.cpp](./DataStructure/Graph/Graph_Demo.cpp) | implement graph structures |
+|Polynomial| [PolyAdd.h](./DataStructure/PolyAdd/PolyAdd.h) [PolyAdd_Demo.cpp](./DataStructure/PolyAdd/PolyAdd_Demo.cpp)| solve add two polynomial problems|  
 
 
 ## Algorithm
 
 | Name | Source |Comment |
 | ---- | -------|------- |
-|Sorting Algorithm | [mySort.h](./sort/mySort.h)  [mySort_Demo](./sort/mySort_Demo.cpp)| classic sorting algorithms |
-|Search Algorithm| [Search.cpp](./Search/Search.cpp)  | include breadth-first search and depth-first search with some examples|
-|Shortest Algorithm| [Floyed-Warshall.cpp](./ShortestPaths/Floyed-Warshall.cpp) [Dijkstra.cpp](./ShortestPaths/Dijkstra.cpp) [Bellman-Ford.cpp](./ShortestPaths/Dijkstra.cpp) | some shortest paths algorithm|
-|KMP | [kmp.cpp](./KMP/kmp.cpp) | the classic string matching algorithm |
+|Sorting Algorithm | [mySort.h](./Algorithm/sort/mySort.h)  [mySort_Demo](./Algorithm/sort/mySort_Demo.cpp)| classic sorting algorithms |
+|Search Algorithm| [Search.cpp](./Algorithm/Search/Search.cpp)  | include breadth-first search and depth-first search with some examples|
+|Shortest Algorithm| [Floyed-Warshall.cpp](./Algorithm/ShortestPaths/Floyed-Warshall.cpp) [Dijkstra.cpp](./Algorithm/ShortestPaths/Dijkstra.cpp) [Bellman-Ford.cpp](./Algorithm/ShortestPaths/Dijkstra.cpp) | some shortest paths algorithm|
+|Union Find Algorithm| [UnionFind.cpp](./Algorithm/UnionFind/UnionFind.cpp) | here are some examples of union find problems|
+|KMP | [kmp.cpp](./Algorithm/KMP/kmp.cpp) | the classic string matching algorithm |
 
 ## License
 
