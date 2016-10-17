@@ -22,6 +22,7 @@ A library containing some data structures and algorithms written in c/c++.
 |Search Algorithm| [Search.cpp](./Algorithm/Search/Search.cpp)  | include breadth-first search and depth-first search with some examples|
 |Shortest Algorithm| [Floyed-Warshall.cpp](./Algorithm/ShortestPaths/Floyed-Warshall.cpp) [Dijkstra.cpp](./Algorithm/ShortestPaths/Dijkstra.cpp) [Bellman-Ford.cpp](./Algorithm/ShortestPaths/Dijkstra.cpp) | some shortest paths algorithm|
 |Union Find Algorithm| [UnionFind.cpp](./Algorithm/UnionFind/UnionFind.cpp) | here are some examples of union find problems|
+|Minimum Spanning Tree | [Kruskal.cpp](./Algorithm/MinimumSpanningTree/Kruskal.cpp) | minimum spanning tree algorithm include kruskal and prim |
 |KMP | [kmp.cpp](./Algorithm/KMP/kmp.cpp) | the classic string matching algorithm |
 
 ## License
