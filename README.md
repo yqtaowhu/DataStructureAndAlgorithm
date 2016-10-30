@@ -24,7 +24,7 @@ A library containing some data structures and algorithms written in c/c++.
 |Union Find Algorithm| [UnionFind.cpp](./Algorithm/UnionFind/UnionFind.cpp) | here are some examples of union find problems|
 |Minimum Spanning Tree | [Kruskal.cpp](./Algorithm/MinimumSpanningTree/Kruskal.cpp) | minimum spanning tree algorithm include kruskal and prim |
 |KMP | [kmp.cpp](./Algorithm/KMP/kmp.cpp) | the classic string matching algorithm |
-
+|minimax algorithm| [readme.md](./Algorithm/TicTacToe/readme.md) |  a TicTacToe game using minimax algorithm and alpha-beta pruing|
 ## License
 
 Copyright 2016 yqtao
