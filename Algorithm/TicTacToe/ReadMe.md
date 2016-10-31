@@ -15,7 +15,7 @@ Windows:
 Compile and run with Visual Studio 
 
 ##Demo
-	(Demo.png)
+![](Demo.png)
 
 ## License
 
