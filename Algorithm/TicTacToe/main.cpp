@@ -1,8 +1,8 @@
 #include"ChessBoard.h"
 #include "TicTacToe.h"
 int main() {
-	TicTacToe game;
 	while (1) {
+		TicTacToe game;
 		game.start();
 		cout << "play again(Y or y):" << endl;
 		char c;
