@@ -11,6 +11,7 @@ A library containing some data structures and algorithms written in c/c++.
 |Binary Search Tree|[binarySearchTree.h](./DataStructure/binarySearchTree/binarySearchTree.h) [binarySearchTree_Demo.cpp](./DataStructure/binarySearchTree/binarySearchTree_Demo.cpp)|implement binarySearchTree|
 |Trie tree |[Trie.cpp](./DataStructure/trieTree/Trie.cpp) | implement trie tree |
 |Graph| [Graph.h](./DataStructure/Graph/Graph.h)  [Graph_Demo.cpp](./DataStructure/Graph/Graph_Demo.cpp) | implement graph structures |
+|String| [String.h](./DataStructure/String/String.h) [String.cpp](./DataStructure/String/String.cpp)|implement own c++ string class|  
 |Polynomial| [PolyAdd.h](./DataStructure/PolyAdd/PolyAdd.h) [PolyAdd_Demo.cpp](./DataStructure/PolyAdd/PolyAdd_Demo.cpp)| solve add two polynomial problems|  
 
 
