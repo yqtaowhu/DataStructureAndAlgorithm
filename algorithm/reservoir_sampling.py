@@ -44,7 +44,7 @@ def selectKItems(stream, n, k):
 # Driver Code
 
 if __name__ == "__main__":
-    stream = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    stream = [2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     n = len(stream);
     k = 5;
     selectKItems(stream, n, k);
