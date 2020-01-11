@@ -1,8 +1,8 @@
 # DataStructureAndAlgorithm
 
-A library containing some data structures and algorithms written in c/c++.
+A library containing some data structures 、algorithms and some programming exercises on leetcode etc. 
 
-## Data Structure
+## 1. Data Structure
 
 | Name |Source| Comment |
 | ---- | -----| ------- |
@@ -15,7 +15,7 @@ A library containing some data structures and algorithms written in c/c++.
 |Polynomial| [PolyAdd.h](./DataStructure/PolyAdd/PolyAdd.h) [PolyAdd_Demo.cpp](./DataStructure/PolyAdd/PolyAdd_Demo.cpp)| solve add two polynomial problems|  
 
 
-## Algorithm
+## 2. Algorithm
 
 | Name | Source |Comment |
 | ---- | -------|------- |
@@ -26,6 +26,16 @@ A library containing some data structures and algorithms written in c/c++.
 |Minimum Spanning Tree | [Kruskal.cpp](./Algorithm/MinimumSpanningTree/Kruskal.cpp) | minimum spanning tree algorithm include kruskal and prim |
 |KMP | [kmp.cpp](./Algorithm/KMP/kmp.cpp) | the classic string matching algorithm |
 |minimax algorithm| [ReadMe.md](./Algorithm/TicTacToe/ReadMe.md) |  a TicTacToe game using minimax algorithm and alpha-beta pruing|
+
+## 3. Programming
+| Name | Source |Comment |
+| ---- | -------|------- |
+|array|[array.md](programing/../Programming/array/array.md)|array algorithm|
+|linked list|[linked_list.md](Programming/linked_list/linked_list.md)|linked list algorithm|
+|tree|[tree.md](Programming/tree/tree.md)|tree correlation algorithm|
+|search|[search](Programming/search/search.md)|bfs,dfs .etc search algorithm|
+
+
 ## License
 
 Copyright 2016 yqtao
