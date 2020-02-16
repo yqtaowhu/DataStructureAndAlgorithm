@@ -31,11 +31,18 @@ A library containing some data structures 、algorithms and some programming exe
 | Name | Source |Comment |
 | ---- | -------|------- |
 |array|[array.md](programing/../Programming/array/array.md)|array algorithm|
+|backtrack|[backtrack.md](Programming/backtrack/backtrack.md)| backtrack algorithm|
+|bfs|[bfs.md](Programming/bfs/readme.md)| breadth first search|
+|binary search| [binary-search.md](Programming/binary-search/binary-search.md)| binary search algorithm|
+|data structure|[data-structure.md](Programming/data-structure/滑动窗口.cpp)| stack,queue algorithm| 
+|dfs|[dfs.md](Programming/dfs/readme.md)| depth first search|
+|dynamic-programming|[dynamic-programming](Programming/dynamit-programming/dynamic-programming.md)|dynamic programming|
 |linked list|[linked_list.md](Programming/linked_list/linked_list.md)|linked list algorithm|
+|search|[search.md](Programming/search/search.md)|bfs,dfs .etc search algorithm|
+|slide window|[slide-window.md](Programming/slide-window/slide-window.md)| slide window algorithm|
+|string|[string.md](Programming/string/string.md)|string algorithm|
 |tree|[tree.md](Programming/tree/tree.md)|tree correlation algorithm|
-|search|[search](Programming/search/search.md)|bfs,dfs .etc search algorithm|
-
-
+|two-pointers|[two-pointers](Programming/two-pointers/two_pointers.md)|two pointers|
 ## License
 
 Copyright 2016 yqtao
