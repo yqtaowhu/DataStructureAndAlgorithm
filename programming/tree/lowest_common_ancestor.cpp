@@ -53,7 +53,7 @@ TreeNode* lowestCommonAncestorForBSTIteration(TreeNode* root, TreeNode* p, TreeN
 
 /************************************************************************************
 求二叉树的最近公共祖先,例如 2，4
-方法1： 找到根节点到2,9的路径
+方法1： 找到根节点到2,4的路径
 6  2
 6  2  4
 所以从短的路径最后开始遍历，查找相同的节点，就是其公共的祖先，2
@@ -92,9 +92,17 @@ TreeNode* lowestCommonAncestorCommonTree(TreeNode* root, TreeNode* p, TreeNode* 
 
 //方法2
 TreeNode* lowestCommonAncestorCommonTree(TreeNode* root, TreeNode* p, TreeNode* q) {
-
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if(root == nullptr || root == p || root == q) {
+        return root;
+    }
+    TreeNode* left = lowestCommonAncestor(root->left, p, q);
+    TreeNode* right = lowestCommonAncestor(root->right, p, q);
+    if(left && right) {
+        return root;
+    }
+    return left ? left : right;
 }
-
 
 int main() {
     TreeNode* p1 = new TreeNode(6);
