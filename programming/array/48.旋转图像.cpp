@@ -8,7 +8,7 @@
 class Solution {
 public:
     // 顺时针旋转图像
-    // 方法1， 转置+反转每一行，两次的矩阵操作
+    // 方法1:转置+反转每一行，两次的矩阵操作
     void rotate_1(vector<vector<int>>& matrix) {
         int n = matrix.size();
         // 转置 
@@ -24,7 +24,7 @@ public:
             }
         }
     }
-    // 考虑4个为一组的元素进行旋转，注意i,j的下标，画图操作
+    // 方法2:考虑4个为一组的元素进行旋转，注意i,j的下标，画图操作
     void rotate(vector<vector<int>>& matrix) {
         int n=matrix.size();
         for (int i=0;i<n/2;i++) {

@@ -7,24 +7,24 @@
 // @lc code=start
 
 /*
-    可以优化成两个变量去求解，max_left,max_right
-            if (height[left - 1] < height[right + 1]) {
-            max_left = Math.max(max_left, height[left - 1]);
-            int min = max_left;
-            if (min > height[left]) {
-                sum = sum + (min - height[left]);
-            }
-            left++;
-        //从右到左更
-        } else {
-            max_right = Math.max(max_right, height[right + 1]);
-            int min = max_right;
-            if (min > height[right]) {
-                sum = sum + (min - height[right]);
-            }
-            right--;
+可以优化成两个变量去求解，max_left,max_right
+    if (height[left - 1] < height[right + 1]) {
+        max_left = Math.max(max_left, height[left - 1]);
+        int min = max_left;
+        if (min > height[left]) {
+            sum = sum + (min - height[left]);
         }
-        参考资料：https://leetcode-cn.com/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/
+        left++;
+    //从右到左更
+    } else {
+        max_right = Math.max(max_right, height[right + 1]);
+        int min = max_right;
+        if (min > height[right]) {
+            sum = sum + (min - height[right]);
+        }
+        right--;
+    }
+参考资料：https://leetcode-cn.com/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/
 */
 #include<vector>
 using namespace std;

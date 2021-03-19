@@ -5,29 +5,42 @@
  */
 
 // @lc code=start
+/*
+ * @lc app=leetcode.cn id=135 lang=cpp
+ *
+ * [135] 分发糖果
+ */
+
+// @lc code=start
 class Solution {
 public:
+    // 1 0 2
+    // 1. 初始化  1 1 1
+    // 2. 从左到右遍历  1 1 2
+    // 3. 从右到左遍历  2 1 2
     int candy(vector<int>& ratings) {
-        if(ratings.empty()) return 0;
-
-        int m = ratings.size();
-        vector<int> left(m,1), right(m,1);
-        // 从左到右遍历
-        for(int i=1; i<m; i++) {
-            if(ratings[i] > ratings[i-1])
-                left[i] = left[i-1] + 1;
+        int size = ratings.size();
+        if(size < 2) {
+            return size;
         }
-        // 从右到左遍历,同时记录结果
-        int res = left[m-1];
-        for(int i=m-2; i>=0; i--) {
-            if(ratings[i] > ratings[i+1]) {
-                right[i] = right[i+1] + 1;
+        vector<int> v(size, 1);
+        // 从左到右遍历,比前一个大值，值加1
+        for(int i=1; i < size; i++) {
+            if(ratings[i] > ratings[i-1]) {
+                v[i] = v[i-1] + 1;
             }
-            res += max(left[i], right[i]);
         }
-        return res;
-        
+        // 从右到左， 比后一个大是，如果本身值小则加1
+        for(int i=size-2; i>=0; i--) {
+            if(ratings[i] > ratings[i+1] && v[i] <= v[i+1]) {
+                v[i] = v[i+1] + 1;
+            }
+        }
+        return accumulate(v.begin(), v.end(), 0);
     }
 };
+// @lc code=end
+
+
 // @lc code=end
 

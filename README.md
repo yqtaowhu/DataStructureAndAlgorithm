@@ -19,6 +19,8 @@ A library containing some data structures 、algorithms and some programming exe
 
 | Name | Source |Comment |
 | ---- | -------|------- |
+|graph|[graph.md](Algorithm/graph/readme.md)| graph algorithm|
+|math|[math.md](Algorithm/math/readme.md)| math|
 |Sorting Algorithm | [mySort.h](./Algorithm/sort/mySort.h)  [mySort_Demo](./Algorithm/sort/mySort_Demo.cpp)| classic sorting algorithms |
 |Search Algorithm| [Search.cpp](./Algorithm/Search/Search.cpp)  | include breadth-first search and depth-first search with some examples|
 |Shortest Algorithm| [Floyed-Warshall.cpp](./Algorithm/ShortestPaths/Floyed-Warshall.cpp) [Dijkstra.cpp](./Algorithm/ShortestPaths/Dijkstra.cpp) [Bellman-Ford.cpp](./Algorithm/ShortestPaths/Dijkstra.cpp) | some shortest paths algorithm|
