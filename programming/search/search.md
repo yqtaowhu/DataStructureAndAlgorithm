@@ -3,6 +3,9 @@
   - [2. 岛屿的最大面积](#2-岛屿的最大面积)
   - [3.  被围绕的区域](#3--被围绕的区域)
   - [4. 判断二分图](#4-判断二分图)
+  - [5.拓扑排序](#5拓扑排序)
+    - [5.1 判断是否有环](#51-判断是否有环)
+    - [5.2 判断是否有环](#52-判断是否有环)
 # 搜索相关算法
 搜索一般是dfs, bfs，两者都有一定的模板
 
@@ -262,3 +265,87 @@ public:
     }
 };
 ```
+
+## 5.拓扑排序
+### 5.1 [判断是否有环](https://leetcode-cn.com/problems/course-schedule/)
+```
+class Solution {
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        // 拓扑排序问题，构建邻接矩阵和入度标
+        if(prerequisites.empty()) {
+            return true;
+        }
+        vector<vector<int>> graph(numCourses, vector<int>());
+        vector<int> indegree(numCourses, 0);
+        int total = 0;
+        for(auto &pre : prerequisites) {
+            graph[pre[1]].push_back(pre[0]);   // 1->0
+            indegree[pre[0]]++;
+        }
+        queue<int> que;
+        // 入度为0的表加入队列中，入度为0说明其没有学习的条件
+        for(int i=0; i < numCourses; i++) {
+            if(indegree[i] == 0) {
+                que.push(i);
+            }
+        }
+        while(!que.empty()) {
+            int node = que.front();
+            que.pop();
+            total++;
+            for(auto &adj : graph[node]) {
+                indegree[adj]--;      // 邻接节点入度减1
+                if(indegree[adj] == 0) {
+                    que.push(adj);
+                }
+            }
+        }
+        return total == numCourses;
+    }
+};
+```
+### 5.2 [判断是否有环](https://leetcode-cn.com/problems/course-schedule-ii/)
+
+给出拓扑排序的结果，和上一题基本一样
+
+```
+class Solution {
+public:
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+          // 拓扑排序问题，构建邻接矩阵和入度标
+        vector<vector<int>> graph(numCourses, vector<int>());
+        vector<int> indegree(numCourses, 0), res;
+        for(auto &pre : prerequisites) {
+            graph[pre[1]].push_back(pre[0]);   // 1->0
+            indegree[pre[0]]++;
+        }
+        queue<int> que;
+        // 入度为0的表加入队列中，入度为0说明其没有学习的条件
+        for(int i=0; i < numCourses; i++) {
+            if(indegree[i] == 0) {
+                que.push(i);
+            }
+        }
+        while(!que.empty()) {
+            int node = que.front();
+            que.pop();
+            res.push_back(node);
+            for(auto &adj : graph[node]) {
+                indegree[adj]--;      // 邻接节点入度减1
+                if(indegree[adj] == 0) {
+                    que.push(adj);
+                }
+           }
+        }
+        // 最后的入度全为0
+        for(int i=0; i < indegree.size(); i++) {
+            if(indegree[i]) {
+                return vector<int>();
+            }
+        }
+        return res;
+    }
+};
+```
+
