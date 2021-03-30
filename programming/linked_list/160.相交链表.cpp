@@ -15,6 +15,18 @@
  */
 class Solution {
 public:
+    // 貌似这种更简单，容易理解
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* p1 = headA, *p2 = headB;
+        while(p1 || p2) {
+            if(p1 == p2) {
+                return p1;
+            }
+            p1 = p1 ? p1->next : headB;
+            p2 = p2 ? p2->next : headA;
+        }
+        return NULL;
+    }
    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode *p1=headA,*p2=headB;
         while(p1!=p2) {
