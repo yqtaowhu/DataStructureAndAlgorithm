@@ -33,10 +33,12 @@ public:
         }
         int left_gain = max(max_gain(root->left), 0);
         int right_gain = max(max_gain(root->right), 0);
+
+        // 记录最大值
         int sum = root->val + left_gain + right_gain;
         max_sum = max(max_sum, sum);
 
-        //维护以前的路径
+        // 返回节点的最大贡献值, 以该节点为根节点的子树中寻找以该节点为起点的一条路径，使得该路径上的节点值之和最大。
         return root->val + max(left_gain, right_gain);
     }
     int maxPathSum(TreeNode* root) {
