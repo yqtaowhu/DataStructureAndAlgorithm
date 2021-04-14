@@ -5,6 +5,32 @@
  */
 
 // @lc code=start
+
+// 简单的O(N)空间复杂度算法
+class Solution {
+public:
+    string reverseWords(string s) {
+        // 换一种思路，从右到左倒叙, 空间复杂度O(N)
+        int i = s.size() - 1;
+        string res = "";
+        while(i >=0) {
+            while(i >= 0 && s[i] == ' ') {
+                i--;
+            }
+            int count = 0;
+            while(i >= 0 && s[i] != ' ') {
+                i--;
+                count++;
+            }
+            if(count) {
+                res += s.substr(i+1, count) + " ";
+            }
+        }
+        return res.substr(0, res.size()-1);
+
+    }
+};
+
 class Solution {
 public:
     string reverseWords(string s) {
