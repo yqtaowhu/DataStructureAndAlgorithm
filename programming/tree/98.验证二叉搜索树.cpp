@@ -16,28 +16,26 @@
  */
 class Solution {
 public:
-bool isValidBST(TreeNode* root) {
-	    stack<TreeNode*>st;
-        long long pre = LONG_LONG_MIN;
-        while (root || st.size()>0) {
-		    if (root) {
-			    st.push(root);
-			    root = root->left;
-		    }   
-		    else {
-				root = st.top();
-				st.pop();
-				
-                if(root->val <= pre) {
-                    return false;
-                }
-                pre = root->val;
-
-				root = root->right;
-			}
-		}
+    bool isValidBST(TreeNode* root) {
+        // 中序遍历有序
+        stack<TreeNode*> st;
+		// 注意了，必须是LLONG_MIN
+        long long last = LLONG_MIN;
+        while(!st.empty() || root) {
+            while(root) {
+                st.push(root);
+                root = root->left;
+            }
+            root = st.top();
+            st.pop();
+            if(root->val <= last) {
+                return false;
+            }
+            last = root->val;
+            root = root->right;
+        }
         return true;
-}
+    }
 };
 // @lc code=end
 
