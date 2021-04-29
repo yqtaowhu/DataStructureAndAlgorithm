@@ -26,14 +26,18 @@ public:
     }
     // 方法2:考虑4个为一组的元素进行旋转，注意i,j的下标，画图操作
     void rotate(vector<vector<int>>& matrix) {
-        int n=matrix.size();
-        for (int i=0;i<n/2;i++) {
-            for (int j=i;j<n-1-i;j++) {
+        if(matrix.empty() || matrix[0].empty()) {
+            return;
+        }
+        int n = matrix.size();
+        // i是圈圈的次数 n/2, j=i开始， j<n-i-1
+        for(int i=0; i < n/ 2; i++) {
+            for(int j = i; j < n-i-1; j++) {    
                 int z = matrix[i][j];
-                matrix[i][j] = matrix[n-j-1][i];
-                matrix[n-j-1][i] = matrix[n-i-1][n-j-1];
-                matrix[n-i-1][n-j-1] = matrix[j][n-i-1];
-                matrix[j][n-i-1] = z;
+                matrix[i][j] = matrix[n-1-j][i];  // 00 = 30 01 = 20
+                matrix[n-1-j][i] = matrix[n-1-i][n-j-1]; // 30 = 33 20 = 32
+                matrix[n-1-i][n-1-j] = matrix[j][n-1-i]; // 33 = 03  32 = 13
+                matrix[j][n-1-i] = z;
             }
         }
     }

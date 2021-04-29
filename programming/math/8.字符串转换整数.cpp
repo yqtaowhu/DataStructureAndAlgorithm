@@ -5,41 +5,34 @@
  */
 
 // @lc code=start
-#include <string>
-#include <iostream>
-
-using namespace std;
 class Solution {
 public:
-    int myAtoi(string str) {
-        if(str.size()<=0) return 0;
-        int i = 0;
-        // 去除空格
-        while(i < str.size() && str[i] == ' ') i++;
-
-        int sign = 1;
-        //不是+，-，或者数字，则有误
-        if(str[i]!='+' && str[i]!='-'&&!isdigit(str[i]))
+    int myAtoi(string s) {
+        int size = s.size();
+        if(size == 0) {
             return 0;
-        if(str[i] == '+') {
-            sign = 1;
-            i++;
-        } else if (str[i] == '-') {
-            sign = -1;
-            i++;
         }
         long long int res = 0;
-        while(i< str.size() && isdigit(str[i])) {
-            int digit = str[i++] - '0';
-            //cout<<digit<<endl;
-            res = res*10 + digit;
-            if(sign*res > INT_MAX) {
-                return INT_MAX;
-            } else if (sign*res < INT_MIN) {
-                return INT_MIN;
-            }
+        int sign = 1, i = 0;
+        // 去空格
+        while(i < size && s[i] == ' ') {
+            i++;
         }
-        return sign*res;   
+        // 符号
+        if(i < size && (s[i] == '-'  || s[i] == '+')) {
+            sign = s[i] == '+' ? 1 : -1;
+            i++;
+        }
+        // 数字 
+        while(i < size && isdigit(s[i])) {
+            int tmp = s[i] - '0';
+            res = 10*res + tmp;
+            if(res > INT_MAX) {
+                return sign == 1 ? INT_MAX : INT_MIN;
+            }
+            i++;
+        }
+        return sign*res;
     }
 };
 // @lc code=end

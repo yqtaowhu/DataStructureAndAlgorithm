@@ -16,22 +16,18 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-       ListNode preHead(0), *pre=&preHead, *cur=head;
-       pre->next = cur;
-       // pre   cur   nxt 三个指针比较好理解
-       while(cur && cur->next) {
-           ListNode* nxt = cur->next;
-           // cur == nxt, pre->next = nxt;
-           // cur != nxt, pre=pre->next, cur = cur->next;
-           if(nxt->val == cur->val) {
-               cur = nxt;
-               pre->next = cur;
-           } else {
-               pre = cur;
-               cur = nxt;
-           }
-       }
-       return preHead.next; 
+        if(!head || !head->next) {
+            return head;
+        }
+        ListNode *cur = head;;
+        while(cur->next) {
+            if(cur->next->val == cur->val) {
+                cur->next = cur->next->next;
+            } else {
+                cur = cur->next;
+            }
+        }
+        return head;
     }
 };
 // @lc code=end
