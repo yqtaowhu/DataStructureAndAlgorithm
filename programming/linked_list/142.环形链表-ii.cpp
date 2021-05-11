@@ -23,23 +23,36 @@
  */
 class Solution {
 public:
+    // 学会如何证明
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
     ListNode *detectCycle(ListNode *head) {
-        if(!head) head;
-        ListNode *low=head, *fast=head;
+        if(!head) {
+            return NULL;
+        }    
+        ListNode* fast = head, *slow = head;
         while(fast && fast->next) {
-            low = low->next;
             fast = fast->next->next;
-            if(low == fast) {
-                low = head;
-                while(low) {
-                    if(low == fast)
-                        return low;
-                    low = low->next;
+            slow = slow->next;
+            if(slow == fast) {
+                // 说明一定有环
+                slow = head;
+                while(slow != fast) {      
+                    slow = slow->next;
                     fast = fast->next;
                 }
+                return slow;
             }
         }
-        return nullptr;
+        return NULL;
     }
 };
 // @lc code=end

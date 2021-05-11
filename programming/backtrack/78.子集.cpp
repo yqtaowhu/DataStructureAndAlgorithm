@@ -22,6 +22,28 @@ public:
         subsets(nums, tmp, res, 0);
         return res;
     }
+
+    // 迭代方法
+class Solution {
+public:
+    // []
+    // 访问1  [], [1]
+    // 访问2  [], [1], [2], [1, 2]
+    // 访问3  [], [1,3], [2, 3], [1, 2, 3] 
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        res.push_back(vector<int> ());
+        for(auto &num : nums) {
+            int size = res.size();
+            for(int i=0; i < size; i++) {
+                vector<int> tmp(res[i].begin(), res[i].end());
+                tmp.push_back(num);
+                res.push_back(tmp);
+            }
+        }
+        return res;
+    }
+};
     /*
     迭代的方法:
     class Solution(object):

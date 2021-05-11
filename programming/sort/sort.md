@@ -1,6 +1,8 @@
 - [排序算法](#排序算法)
   - [1.快速排序](#1快速排序)
   - [2.插入排序](#2插入排序)
+  - [3.冒泡排序](#3冒泡排序)
+  - [4.归并排序](#4归并排序)
 
 # [排序算法](https://leetcode-cn.com/problems/sort-an-array/)
 
@@ -67,6 +69,78 @@ public:
     }
     vector<int> sortArray(vector<int>& nums) {
         insert_sort(nums);
+        return nums;
+    }
+};
+```
+
+## 3.冒泡排序
+
+```
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        // 冒泡排序
+        if(nums.empty()) {
+            return nums;
+        }
+        int size = nums.size(), exchange = 1;
+        // 5 2 3 1
+        for(int i=0; i < size-1; i++) {
+            exchange = 0;
+            for(int j=size-1; j > i; j--) {
+                if(nums[j-1] > nums[j]) {
+                    exchange = 1;
+                    swap(nums[j-1], nums[j]);
+                }
+            }
+            if(exchange == 0) {
+                break;
+            }
+        }
+        return nums;
+
+    }
+};
+```
+
+## 4.归并排序
+
+```
+class Solution {
+public:
+    void merge(vector<int>& nums, int l, int mid, int r) {
+        // 1 2 5   3 4 6
+        int i = l, j = mid + 1, k = 0;
+        vector<int> v(r - l + 1);
+        while(i <= mid && j <= r) {
+            if(nums[i] <= nums[j]) {
+                v[k++] = nums[i++];
+            } else {
+                v[k++] = nums[j++];
+            }
+        }
+        while(i <= mid) {
+            v[k++] = nums[i++];
+        }
+        while(j <= r) {
+            v[k++] = nums[j++];
+        }
+        for(int i=0; i < k; i++) {
+            nums[l+i] = v[i];
+        }
+    }
+    void merge_sort(vector<int>& nums, int i, int j) {
+        // 5, 2 , 1, 3, 6, 4
+        if(i < j) {
+            int mid = (i + j) / 2;
+            merge_sort(nums, i, mid);
+            merge_sort(nums, mid+1, j);
+            merge(nums, i, mid , j);
+        }
+    }
+    vector<int> sortArray(vector<int>& nums) {
+        merge_sort(nums, 0, nums.size()-1);
         return nums;
     }
 };
