@@ -36,6 +36,21 @@ public:
         return preHead.next;
     }
     // 方法2， 遍历一遍，快慢指针，找到前驱节点
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode preHead(0), *slow = &preHead;
+        slow->next = head;
+        ListNode*fast = slow;
+        while(n--) {
+            fast = fast->next;
+        }
+        while(fast->next) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        slow->next = slow->next->next;
+        return preHead.next;
+
+    }
 };
 // @lc code=end
 
