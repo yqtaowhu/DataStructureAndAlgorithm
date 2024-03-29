@@ -7,65 +7,35 @@
 // @lc code=start
 
 // 暴力方法
-class Solution {
-public:
-    bool help(string s) {
-        int i = 0, j = s.size() - 1;
-        while(i < j) {
-            if(s[i] != s[j]) {
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
-    string longestPalindrome(string s) {
-        int size = s.size();
-        if(size <= 1) {
-            return s;
-        }
-        int start = 0, max_len = 1;
-        //cout << s.substr(0, 1) << endl;
-        for(int i=0; i < size; i++) {
-            for(int j=i+1; j < size; j++) {
-                if(j-i+1 > max_len && help(s.substr(i, j- i + 1))) {
-                    start = i;
-                    max_len = j - i + 1;
-                }
-            }
-        }
-        return s.substr(start, max_len);
-    }
-};
+#include<string>
+using namespace std;
 
-// 中心扩展法   
 class Solution {
 public:
     string longestPalindrome(string s) {
         int size = s.size();
-        if(size <= 1) {
-            return s;
-        }
-        int start=0, max_len=1;
-        for(int i=0; i < size - max_len / 2;) {
-            int j = i, k = i;
-            // 扩展相同字符
-            while(k < size - 1 && s[k] == s[k+1]) {
-                k++;
-            }
-            i = k+1;
-            while(j > 0 && k < size -1 && s[j-1] == s[k+1]) {
-                k++;
+        if(size <= 1) return s;
+        int max_len = 0, beg = 0;
+        for(int i=1; i < size; i++) {
+            int j = i-1, k = i+1;
+            while(j >=0 && s[j] == s[i]) {
                 j--;
             }
-            if(k-j+1 > max_len) {
-                max_len = k-j+1;
-                start = j;
+            while(k < size && s[k] == s[i]) {
+                k++;
+            }
+            while(j>=0 && k < size && s[j] == s[k]) {
+                j--;
+                k++;
+            }
+            if(k-j-1 > max_len) {
+                beg = j + 1;
+                max_len = k-j-1;
             }
         }
-        return s.substr(start, max_len);
+        return s.substr(beg, max_len);
     }
+};
 };
 // @lc code=end
 

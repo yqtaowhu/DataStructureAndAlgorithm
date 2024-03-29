@@ -59,44 +59,44 @@ public:
 // @lc code=end
 
 
-class Solution {
-    public:
-    string minWindow(string s, string t) {
-        unordered_map<char, int> need, hash;
-        int count = 0, min_len = INT_MAX, beg = 0, need_count=0;
-        int s_size = s.size(), t_size = t.size();
-        for(int i=0; i < t_size; i++) {
-            if(need.find(t[i]) == need.end()) {
-                need_count += 1;
-            }
-            need[t[i]]++;
-        }
-        cout << "need" << need_count << endl;
-        for(int i=0; i < s_size; i++) {
-            int j = i;
-            hash.clear();
-            count = 0;
-            for(; j<s_size; j++) {
-                char tmp = s[j];
-                hash[tmp]++;
-                //cout << "1 " << hash[tmp] << endl;
-                if (need.find(tmp) != need.end()) {
-                    if(need[tmp] == hash[tmp]) {
-                        count += 1;
-                    }
-                }
-                if(count == need_count) {
-                    if(j-i+1 < min_len) {
-                        min_len = j - i + 1;
-                        beg = i;
-                    }
-                    break;
-                }
-            }
-        }
-        if (min_len < INT_MAX) {
-            return s.substr(beg, min_len);
-        }
-        return "";
-    }
-};
+// class Solution {
+//     public:
+//     string minWindow(string s, string t) {
+//         unordered_map<char, int> need, hash;
+//         int count = 0, min_len = INT_MAX, beg = 0, need_count=0;
+//         int s_size = s.size(), t_size = t.size();
+//         for(int i=0; i < t_size; i++) {
+//             if(need.find(t[i]) == need.end()) {
+//                 need_count += 1;
+//             }
+//             need[t[i]]++;
+//         }
+//         cout << "need" << need_count << endl;
+//         for(int i=0; i < s_size; i++) {
+//             int j = i;
+//             hash.clear();
+//             count = 0;
+//             for(; j<s_size; j++) {
+//                 char tmp = s[j];
+//                 hash[tmp]++;
+//                 //cout << "1 " << hash[tmp] << endl;
+//                 if (need.find(tmp) != need.end()) {
+//                     if(need[tmp] == hash[tmp]) {
+//                         count += 1;
+//                     }
+//                 }
+//                 if(count == need_count) {
+//                     if(j-i+1 < min_len) {
+//                         min_len = j - i + 1;
+//                         beg = i;
+//                     }
+//                     break;
+//                 }
+//             }
+//         }
+//         if (min_len < INT_MAX) {
+//             return s.substr(beg, min_len);
+//         }
+//         return "";
+//     }
+// };
