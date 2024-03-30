@@ -7,6 +7,20 @@
 // @lc code=start
 class Solution {
 public:
+    bool isPalindrome(int x) {
+        if (x < 0 || x && x % 10 == 0) return false;
+        int s = 0;
+        while (s <= x)
+        {
+            s = s * 10 + x % 10;
+            if (s == x || s == x / 10) return true; // 分别处理整数长度是奇数或者偶数的情况
+            x /= 10;
+        }
+        return false;
+    }
+};
+
+/*
 bool isPalindrome(int x) {
     // 解法1： long long int 
 	if (x < 0 || (x != 0 && x % 10 == 0)) {
@@ -23,22 +37,5 @@ bool isPalindrome(int x) {
 	}
 	return x ==result;
 }
-};
-// @lc code=end
-
-/*
-解法2： 其实只需要考察一般即可
-
-    bool isPalindrome(int x) {
-        if (x < 0 || x && x % 10 == 0) return false;
-        int s = 0;
-        while (s <= x)
-        {
-            s = s * 10 + x % 10;
-            if (s == x || s == x / 10) return true; // 分别处理整数长度是奇数或者偶数的情况
-            x /= 10;
-        }
-        return false;
-    }
 */
-
+// @lc code=end
