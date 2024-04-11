@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   141.环形链表.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/11 20:45:45 by taoyanqi          #+#    #+#             */
+/*   Updated: 2024/04/11 20:45:48 by taoyanqi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
  * @lc app=leetcode.cn id=141 lang=cpp
  *
@@ -16,15 +28,13 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        if(!head) return false;
-        ListNode* low = head, *fast=head;
-        while(fast && fast->next) {
+        if(!head || !head->next) return false;
+        ListNode *slow = head, *fast = head->next;
+        while(fast && fast->next && slow != fast) {
+            slow = slow->next;
             fast = fast->next->next;
-            low = low->next;
-            if(low == fast)
-                return true;
         }
-        return false;
+        return slow == fast;
     }
 };
 // @lc code=end
