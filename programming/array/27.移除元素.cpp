@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   27.移除元素.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/22 20:41:17 by taoyanqi          #+#    #+#             */
+/*   Updated: 2024/04/22 20:41:21 by taoyanqi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
  * @lc app=leetcode.cn id=27 lang=cpp
  *
@@ -7,17 +19,17 @@
 // @lc code=start
 class Solution {
 public:
-    // 双指针法，i，j快慢指针，简单题
     int removeElement(vector<int>& nums, int val) {
-        int len = nums.size();
-        if(len < 1) return 0;
-        int i = 0, j = 0;
-        for(j = 0; j<len; j++) {
-            if(nums[j] != val) {
-                nums[i++] = nums[j];
+        int m = nums.size();
+        if(m == 0) return 0;
+        int end = 0;
+        for(int i=0; i < m; i++) {
+            if(nums[i] != val) {
+                nums[end] = nums[i];
+                end++;
             }
         }
-        return i;
+        return end;
     }
 };
 // @lc code=end

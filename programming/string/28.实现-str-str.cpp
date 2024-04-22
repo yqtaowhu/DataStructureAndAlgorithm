@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   28.实现-str-str.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/22 20:15:16 by taoyanqi          #+#    #+#             */
+/*   Updated: 2024/04/22 20:15:17 by taoyanqi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
  * @lc app=leetcode.cn id=28 lang=cpp
  *
@@ -7,20 +19,16 @@
 // @lc code=start
 class Solution {
 public:
-    // 简单双指针法
-    int strStr_1(string haystack, string needle) {
-        int n1=haystack.size(),n2=needle.size();
-        if(n2==0) return 0;
-        if (n1<n2) return -1;
-        int i=0,j=0;
-        // 注意只需要 i<n1-n2即可
-        // 下面的写法很精髓，简单
-        for (i=0;i<=n1-n2;i++) {
-            for (j=0;j<n2;j++) {
-                if (needle[j]!=haystack[i+j]) 
-                    break;
+    int strStr(string haystack, string needle) {
+        int m = haystack.size(), n = needle.size();
+        if(n > m) return -1;
+        for(int i=0; i <= m-n; i++) {
+            int k = i, j = 0;
+            while(k < m && j < n && haystack[k] == needle[j]) {
+                k++;
+                j++;
             }
-            if (j==n2) return i;
+            if(j == n) return i;
         }
         return -1;
     }
