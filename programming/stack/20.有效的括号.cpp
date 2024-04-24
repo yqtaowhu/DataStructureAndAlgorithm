@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   20.有效的括号.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 20:03:21 by taoyanqi          #+#    #+#             */
+/*   Updated: 2024/04/24 20:03:21 by taoyanqi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
  * @lc app=leetcode.cn id=20 lang=cpp
  *
@@ -9,19 +21,19 @@ class Solution {
 public:
     bool isValid(string s) {
         stack<char> st;
-        for(int i=0; i<s.size(); i++) {
-            if(s[i] == '(' || s[i] == '[' || s[i] == '{') {
-                st.push(s[i]);
+        for(auto c: s) {
+            if(c == '(' || c == '[' || c == '{') {
+                st.push(c);
             } else {
+                // 注意判断栈空
                 if(st.empty()) return false;
-                char c = st.top();
+                char t = st.top();
                 st.pop();
-                if((s[i] == ')' && c != '(') || (s[i] == ']' && c != '[') || 
-                    (s[i] == '}' && c != '{'))
-                    return false;          
+                if((c == ')' &&  t != '(') || (c == ']' && t != '[')  || (c == '}' && t != '{')) {
+                    return false;
+                }
             }
-        } 
-        
+        }
         return st.empty();
     }
 };
