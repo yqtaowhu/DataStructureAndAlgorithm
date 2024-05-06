@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   206.反转链表.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 20:10:42 by taoyanqi          #+#    #+#             */
+/*   Updated: 2024/05/06 20:10:55 by taoyanqi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
  * @lc app=leetcode.cn id=206 lang=cpp
  *
@@ -29,7 +41,7 @@ public:
     }
     ListNode* reverseList(ListNode* head) {
         //return dfs(head, nullptr); // 递归方法
-        // 迭代方法
+        // 迭代方法, 四行切记
         ListNode* prev = nullptr, *nxt;
         while(head) {
             nxt = head->next;

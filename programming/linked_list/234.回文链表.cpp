@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   234.回文链表.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 21:00:00 by taoyanqi          #+#    #+#             */
+/*   Updated: 2024/05/06 21:00:01 by taoyanqi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
  * @lc app=leetcode.cn id=234 lang=cpp
  *
@@ -17,34 +29,34 @@
  */
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) {
-        if(!head || !head->next) {
-            return true;
+    ListNode *reverse_list(ListNode *head) {
+        if(!head || !head->next) return head;
+        ListNode *pre = nullptr;
+        while(head) {
+            ListNode *nxt = head->next;
+            head->next = pre;
+            pre = head;
+            head = nxt;
         }
-        // 1->2->2->1      ->  1->2->2<-1
-        // 1->2->3->2->1   ->  1->2->3<-2<-1
-        ListNode* slow = head, *fast = head;
+        return pre;
+    }
+
+    bool isPalindrome(ListNode* head) {
+        if(!head || !head->next) return true;
+        // 1 2 2 1 
+        // 1 2 3 4 5
+        ListNode *slow = head, *fast = head;
         while(fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
-        // 反转链表
-        ListNode* cur = slow->next, *pre = slow;
-        slow->next = nullptr;
-        while(cur) {
-            ListNode* nxt = cur->next;
-            cur->next = pre;
-            pre = cur;
-            cur = nxt;
-        }
-        ListNode* tail = pre;
-        cur = head;
-        while(cur && tail) {
-            if(cur->val != tail->val) {
+        ListNode *cur = reverse_list(slow);
+        while(head && cur) {
+            if(head->val != cur->val) {
                 return false;
             }
+            head = head->next;
             cur = cur->next;
-            tail = tail->next;
         }
         return true;
     }
