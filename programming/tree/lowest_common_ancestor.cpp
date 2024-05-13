@@ -91,7 +91,6 @@ TreeNode* lowestCommonAncestorCommonTree(TreeNode* root, TreeNode* p, TreeNode* 
 }
 
 //方法2
-TreeNode* lowestCommonAncestorCommonTree(TreeNode* root, TreeNode* p, TreeNode* q) {
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     if(root == nullptr || root == p || root == q) {
         return root;
