@@ -8,19 +8,17 @@
 class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
-        // 贪心的方法
-        // 不为空地，跳两格
         int size = flowerbed.size();
-        for(int i=0; i<size && n; i+=2) {
-            // 当前为空地
-            if(flowerbed[i] == 0) {
-                // 当前为空地，且是最后一个，一定可以种的, 种下后要跳两格
-                if(i == size-1 || flowerbed[i+1] == 0) {
+        for(int i=0; i < size && n > 0; i++) {
+            // 连续三个为0，考虑首位特殊情况
+            //不考虑首位 i-1, i , i+1都为0
+            //考虑首位 i==0, i, i+1为0， i==m-1,ii-1 为0
+            if((i == 0 || flowerbed[i-1] == 0) && 
+                (flowerbed[i] == 0) && 
+                (i==size-1 || flowerbed[i+1] == 0)) {
                     n--;
-                } else {  // 如果后一个也种了花，则要跳3格
-                    i++;
+                    i++; // 下一个位置肯定不能
                 }
-            }
         }
         return n == 0;
     }

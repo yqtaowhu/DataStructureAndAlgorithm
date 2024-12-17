@@ -8,22 +8,18 @@
 class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) {
-        if (s.empty() || g.empty()) {
-            return 0;
-        }
-        // 贪心，让小饼干给胃口小的孩子，先满足胃口小的孩子
         sort(g.begin(), g.end());
         sort(s.begin(), s.end());
-        int res = 0, child = 0, candy = 0;
-        while(child < g.size() && candy < s.size()) {
-            // 满足和不满足条件饼干都要++
-            if(g[child] <= s[candy]) {
-                res++;
-                child++;
+        int g_size = g.size(), s_size = s.size();
+        int g_idx = 0, s_idx = 0;
+        while(g_idx < g_size && s_idx < s_size) {
+            // 满足需求
+            if(g[g_idx] <= s[s_idx]) {
+                g_idx += 1;
             }
-            candy++;
+            s_idx += 1;
         }
-        return res;
+        return g_idx;
     }
 };
 // @lc code=end
