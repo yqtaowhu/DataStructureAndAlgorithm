@@ -11,6 +11,51 @@
 #include <algorithm>
 using namespace std;
 
+// 只加入入度为0的点
+// 每次讲nxt的入度都减1
+// 最后判断是不是所有入度都为0
+class Solution {
+public:
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<vector<int> > graph(numCourses); // 构造邻接表
+        vector<int> indegree(numCourses, 0), res; // 顶点入度
+        for(auto &pre : prerequisites) {
+            //cout << pre[0] << " " << pre[1] << " " << endl;
+            graph[pre[1]].push_back(pre[0]);
+            indegree[pre[0]] += 1;
+        }
+        // 广搜解拓扑排序问题，入队所有入度为0的点
+        queue<int> que;
+        for(int i=0; i < numCourses; i++) {
+            if(indegree[i] == 0) {
+                que.push(i);
+                //res.push_back(i);   // 加入
+            }
+        }
+        while(!que.empty()) {
+            int cur = que.front();
+            que.pop();
+            res.push_back(cur);
+            //cout << cur << endl;
+            // 遍历相邻节点, 所有指向结点入度-1
+            for(auto &nxt : graph[cur]) {
+                indegree[nxt]--;
+                // 入度为0加入队列
+                if(indegree[nxt] == 0) {
+                    que.push(nxt); 
+                }
+            }
+        }
+        for (int i = 0; i < indegree.size(); ++i) {
+            if (indegree[i] != 0) {
+                return vector<int>();
+            }
+        }
+        return res;  
+
+    }
+};
+
 class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
