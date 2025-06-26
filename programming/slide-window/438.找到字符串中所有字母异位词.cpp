@@ -1,50 +1,43 @@
-/*
- * @lc app=leetcode.cn id=438 lang=cpp
- *
- * [438] 找到字符串中所有字母异位词
- */
 
-// @lc code=start
-#include<iostream>
-#include<unordered_map>
-#include<vector>
-
-using namespace std;
+// 模板题， 滑动窗口，定长和不定长都可以
 class Solution {
 public:
-    vector<int> findAnagrams(string s, string p) {
-        int left=0, right = 0;
-        unordered_map<char,int> needs, windows;
-        for(auto c:p) needs[c]++;
+vector<int> findAnagrams(string s, string t) {
+    unordered_map<char, int> need, window;
+    for (char c : t) need[c]++;
 
-        vector<int> res;
-        int match=0;
-        while(right<s.size()) {
-            char c1 = s[right];
-            if(needs.count(c1)) {
-                windows[c1]++;
-                if(windows[c1] == needs[c1]) {
-                    match++;
-                }
-            }
-            right++;
-            while(match == needs.size()) {
-                // 满足所含字母条件且长度合适
-                if(right-left == p.size()) {
-                    res.push_back(left);
-                }
-                char c2 = s[left];
-                if(needs.count(c2)) {
-                    windows[c2]--;
-                    if(windows[c2] < needs[c2]) {
-                        match--;
-                    }
-                }
-                left++;
+    int left = 0, right = 0;
+    int valid = 0;
+    vector<int> res; // 记录结果
+    while (right < s.size()) {
+        // insert 
+        char c = s[right];
+        right++;
+        // 进行窗口内数据的一系列更新
+        if (need.count(c)) {
+            window[c]++;
+            if (window[c] == need[c]) 
+                valid++;
+        }
+        // 判断左侧窗口是否要收缩
+        while (right - left >= t.size()) {   // 本题可以换成if
+            // 当窗口符合条件时，把起始索引加入 res
+            // update
+            if (valid == need.size())
+                res.push_back(left);
+            char d = s[left];
+            // remove
+            left++;
+            // 进行窗口内数据的一系列更新
+            if (need.count(d)) {
+                if (window[d] == need[d])
+                    valid--;
+                window[d]--;
             }
         }
-        return res;
     }
+    return res;
+}
 };
 // @lc code=end
 
