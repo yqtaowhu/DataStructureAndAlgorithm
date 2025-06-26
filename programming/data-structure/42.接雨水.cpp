@@ -26,36 +26,32 @@
     }
 参考资料：https://leetcode-cn.com/problems/trapping-rain-water/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-8/
 */
-#include<vector>
-using namespace std;
 
 
+// 单调栈的做法一定要回，比较清晰明了
 class Solution {
 public:
     int trap(vector<int>& height) {
-        // 找到当前位置的左边最高和右边最高的高度
-        int n = height.size();
-        vector<int> left(n,0), right(n,0);
-        int max_left=0, max_right=0;
-        // 当前位置左边最大高度
-        for(int i=1; i<n;i++) {
-            left[i] = max(left[i-1], height[i-1]);
-        }
-        // 当前位置右边最大高度
-        for(int i=n-2; i>=0;i--) {
-            right[i] = max(right[i+1], height[i+1]);
-        }
-
+        // 0,1,0,2,1,0,1,3,2,1,2,1
+        // 维护单调递减栈, 当前元素比栈顶大，则更新计算
+        if(height.empty()) return 0;
+        stack<int> st;
         int res = 0;
-        // 遍历每个位置，求每个位置的存储量
-        for(int i=1; i<n-1; i++) {
-            int min_edge = min(left[i], right[i]);
-            // 满足条件
-            if(min_edge > height[i]) {
-                res += min_edge - height[i];
+        for (int i = 0; i < height.size(); i++) {
+            while (!st.empty() && height[i] >= height[st.top()]) {
+                int bottom_h = height[st.top()];
+                st.pop();
+                // 在小元素出栈后，要考虑其左边的元素，根据这个统计
+                if (st.empty()) {
+                    break;
+                }
+                int left = st.top();
+                int dh = min(height[left], height[i]) - bottom_h; // 面积的高
+                res += dh * (i - left - 1);
             }
+            st.push(i);
         }
-        return res; 
+        return res;
     }
 };
 // @lc code=end
