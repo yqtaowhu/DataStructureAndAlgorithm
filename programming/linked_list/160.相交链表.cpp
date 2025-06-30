@@ -1,10 +1,3 @@
-/*
- * @lc app=leetcode.cn id=160 lang=cpp
- *
- * [160] 相交链表
- */
-
-// @lc code=start
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -15,26 +8,15 @@
  */
 class Solution {
 public:
-    // 貌似这种更简单，容易理解
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* p1 = headA, *p2 = headB;
-        while(p1 || p2) {
-            if(p1 == p2) {
-                return p1;
-            }
-            p1 = p1 ? p1->next : headB;
-            p2 = p2 ? p2->next : headA;
+        // 2 6 4
+        // 1 5
+        ListNode *a = headA, *b = headB;
+        //while(a && b && a != b) {  这样ab都不会有空，进入死循环
+        while(a != b) {
+            a = a ? a->next : headB;  // 要让a>next可能为空，才能跳出循环
+            b = b ? b->next : headA;
         }
-        return NULL;
-    }
-   ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode *p1=headA,*p2=headB;
-        while(p1!=p2) {
-            p1= p1 ? p1->next : headB;
-            p2= p2 ? p2->next : headA;
-        }
-        return p1;
+        return a;
     }
 };
-// @lc code=end
-

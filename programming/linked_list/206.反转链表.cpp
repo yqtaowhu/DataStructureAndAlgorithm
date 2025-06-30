@@ -6,7 +6,7 @@
 /*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 20:10:42 by taoyanqi          #+#    #+#             */
-/*   Updated: 2024/05/06 20:10:55 by taoyanqi         ###   ########.fr       */
+/*   Updated: 2025/06/30 11:55:50 by taoyanqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,5 @@ public:
     }
 };
 
-class Solution {
-public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode preHead(0), *pre = &preHead, *cur = head;
-        pre->next = head;
-        while(cur && cur->next) {
-            ListNode *nxt = cur->next;
-            cur->next = nxt->next;
-            nxt->next = pre->next;
-            pre->next = nxt;
-        }
-        return preHead.next;
-    }
-};
 // @lc code=end
 
