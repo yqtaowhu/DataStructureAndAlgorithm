@@ -41,18 +41,17 @@ public:
         return res;
     }
     /*
-    vector<int> res;
-    vector<int> inorderTraversalRecursion(TreeNode* root) {
-        // 左-> 根 -> 右的遍历次序
-        if (root != nullptr) {
-            if (root->left)
-                inorderTraversalRecursion(root->left);
-
-            res.push_back(root->val);    
-
-            if (root->right)
-                inorderTraversalRecursion(root->right);
+    void inorder(TreeNode* root, vector<int>& res) {
+        if (!root) {
+            return;
         }
+        inorder(root->left, res);
+        res.push_back(root->val);
+        inorder(root->right, res);
+    }
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        inorder(root, res);
         return res;
     }
     */
