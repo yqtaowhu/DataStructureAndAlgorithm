@@ -1,35 +1,34 @@
-/*
- * @lc app=leetcode.cn id=46 lang=cpp
- *
- * [46] 全排列
- */
-
-// @lc code=start
 class Solution {
 public:
-    vector<vector<int> > permute(vector<int>& nums) {
-        int length = nums.size();
-        vector<vector<int> > res;
-        if(length == 0)
-            return res;
-        
-        permutationRecursively(nums, 0, length, res);
-        
-        return res;
-    }
-    
-    void permutationRecursively(vector<int> &nums, int mStart, int length, vector<vector<int> > &res){
-        if(mStart == length - 1){
-            res.push_back(nums);
+    // 需要用一个标记vis
+
+    void backtrace(vector<int>& nums, vector<vector<int>>& res, vector<int>& tmp, 
+                   vector<int>& vis) {
+        if(tmp.size() == nums.size()) {
+            res.push_back(tmp);
             return;
         }
-        
-        for(int i = mStart; i < length; i++){
-            swap(nums[mStart], nums[i]);
-            permutationRecursively(nums, mStart + 1, length, res);
-            swap(nums[mStart], nums[i]);
+        // 每次都从0开始，使用标记。。。。。
+        for(int i=0; i < nums.size(); i++) {
+            if(vis[i] == 0) {
+                vis[i] = 1;
+                tmp.push_back(nums[i]);
+                backtrace(nums, res, tmp, vis);
+                tmp.pop_back();
+                vis[i] = 0;
+            }
+
         }
+        return;
+
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> tmp;
+        vector<int> vis(nums.size(), 0);
+        if(nums.empty()) return res;
+        int size = nums.size();
+        backtrace(nums, res, tmp, vis);
+        return res;
     }
 };
-// @lc code=end
-
