@@ -16,6 +16,29 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// 自顶向下
+
+class Solution {
+public:
+    int ans = 0;
+    void dfs(TreeNode* root, int x) {
+        if(!root) return;
+        x = 10 * x + root->val;
+        if(!root->left && !root->right) {
+            ans += x;
+        }
+        dfs(root->left, x);
+        dfs(root->right, x);
+    }
+    int sumNumbers(TreeNode* root) {
+        dfs(root, 0);
+        return ans;
+        
+    }
+};
+
+
 class Solution {
 public:
     // 广度优先搜索很简单

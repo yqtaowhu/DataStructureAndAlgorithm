@@ -6,7 +6,7 @@
 /*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 21:17:35 by taoyanqi          #+#    #+#             */
-/*   Updated: 2024/04/16 21:11:00 by taoyanqi         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:43:38 by taoyanqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,28 @@ public:
         return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
     }
 };
+
+
+
+// 自顶向下
+class Solution {
+public:
+    int ans = 0;
+    void dfs(TreeNode* root, int targetSum) {
+        if(!root) return;
+        targetSum -= root->val;
+        // 叶子结点
+        if(!root->left && !root->right && 0 == targetSum) {
+            ans = 1;
+        }
+        dfs(root->left, targetSum);
+        dfs(root->right, targetSum);
+    }
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        dfs(root, targetSum);
+        return ans;
+    }
+};
+
 // @lc code=end
 

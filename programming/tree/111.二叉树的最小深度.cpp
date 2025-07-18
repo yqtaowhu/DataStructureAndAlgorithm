@@ -23,6 +23,51 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+
+// dfs
+
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if (root == nullptr) {
+            return 0;
+        }
+        if (root->right == nullptr) {
+            return minDepth(root->left) + 1;
+        }
+        if (root->left == nullptr) {
+            return minDepth(root->right) + 1;
+        }
+        return min(minDepth(root->left), minDepth(root->right)) + 1;
+    }
+};
+
+// 自顶向下
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        int ans = INT_MAX;
+        auto dfs = [&](this auto&& dfs, TreeNode* node, int cnt) -> void {
+            if (node == nullptr) {
+                return;
+            }
+            cnt++;
+            // 更新
+            if (node->left == nullptr && node->right == nullptr) { // node 是叶子
+                ans = min(ans, cnt);
+                return;
+            }
+            dfs(node->left, cnt);
+            dfs(node->right, cnt);
+        };
+        dfs(root, 0);
+        return root ? ans : 0;
+    }
+};
+
+
+// bfs
 class Solution {
 public:
     int minDepth(TreeNode* root) {
