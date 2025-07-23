@@ -60,3 +60,32 @@ public:
 };
 // @lc code=end
 
+
+// 选择的角度
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> ans;
+        vector<int> path;
+
+        auto dfs = [&](this auto&& dfs, int i) -> void {
+            if (i == n) { // 子集构造完毕
+                ans.emplace_back(path);
+                return;
+            }
+
+            // 不选 nums[i]
+            dfs(i + 1);
+
+            // 选 nums[i]
+            path.push_back(nums[i]);
+            dfs(i + 1);
+            path.pop_back(); // 恢复现场
+        };
+
+        dfs(0);
+        return ans;
+    }
+};
