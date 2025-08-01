@@ -1,30 +1,23 @@
-/*
- * @lc app=leetcode.cn id=77 lang=cpp
- *
- * [77] 组合
- */
-
-// @lc code=start
 class Solution {
 public:
-    void dfs(vector<vector<int>> &combs, vector<int> &comb, int n, int k, int beg) {
-        if(comb.size() == k) {
-            combs.push_back(comb);
+    vector<int> tmp;
+    vector<vector<int>> res;
+    void dfs(int n, int k, int beg) {
+        if(tmp.size() == k) {
+            res.push_back(tmp);
             return;
         }
-        for(int i=beg; i<=n; i++) {
-            comb.push_back(i);
-            dfs(combs, comb, n, k, i+1);
-            comb.pop_back();
+        // 这里可以进行剪枝
+        for(int i=beg; i <= n - (k - tmp.size()) + 1; i++) {
+            tmp.push_back(i);
+            dfs(n, k, i+1);
+            tmp.pop_back();
         }
+
     }
     vector<vector<int>> combine(int n, int k) {
-        vector<int> comb;
-        vector<vector<int>> combs;
-        dfs(combs, comb, n, k, 1);
-        return combs;
-
+        dfs(n, k, 1);
+        return res;
+        
     }
 };
-// @lc code=end
-
