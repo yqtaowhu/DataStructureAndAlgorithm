@@ -1,35 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   70.爬楼梯.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 20:53:25 by taoyanqi          #+#    #+#             */
-/*   Updated: 2024/04/17 20:53:26 by taoyanqi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
- * @lc app=leetcode.cn id=70 lang=cpp
- *
- * [70] 爬楼梯
- */
-
-// @lc code=start
 class Solution {
 public:
     int climbStairs(int n) {
-       if(n<=2) return n;
-       int a=1,b=2;
-       int res = 0;
-       for(int i=3; i<=n; i++) {
-           res = a+b;
-           a = b;
-           b = res;
-       } 
-       return res;
+        int f0 = 1, f1 = 1;
+        for (int i = 2; i <= n; i++) {
+            int new_f = f1 + f0;
+            f0 = f1;
+            f1 = new_f;
+        }
+        return f1;
     }
 };
-// @lc code=end
-
