@@ -1,18 +1,16 @@
 class Solution {
 public:
+    // dp[i]:  以nums[i]结尾的最大子数组和
+    // 单独 , nums[i] , 不单独 dp[i-1] + nums[i]
+    // dp[i] = max(dp[i-1], 0) + nums[i]
+    // f = max(f, 0) + nums[i]
     int maxSubArray(vector<int>& nums) {
-        if(nums.empty()) return 0;
-        int n = nums.size();
-        if(n == 1) return nums[0];
-        // 动态规划
-        // f[i] 是以i为结尾的最大子数组
-        // f[i] = max(f[i-1] + nums[i], nums[i])
-        // 因为i至于i-1有关，可以优化空间复杂度
-        int pre = 0, res = nums[0];
-        for(const auto &x : nums) {
-            pre = max(pre + x, x);
-            res = max(res, pre);
+        int ans = INT_MIN;
+        int f = 0;
+        for(int i = 0; i < nums.size(); i++){
+            f = max(f, 0) + nums[i];
+            ans = max(ans, f);
         }
-        return res;   
+        return ans;
     }
 };
