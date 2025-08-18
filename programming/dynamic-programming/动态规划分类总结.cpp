@@ -31,3 +31,13 @@ dp[i] = max(dp[i-1], dp[i-2] + nums[i])
 - 152 : 最大乘积子数组， 注意负数的影响，当存在负数时，对最大和最小进行交换
 - 1186 : https://leetcode.cn/problems/maximum-subarray-sum-with-one-deletion/
 
+## 4.网格图dp
+
+
+## 5.背包问题
+存在问题f[j] = f[j] || f[j-num];
+组合问题: dp[i] = dp[i] + dp[i-num];
+最值问题: dp[j] = min(dp[j], dp[j-coin]+1);
+
+- 01背包: 416
+- 完全背包 322, 279
