@@ -21,6 +21,7 @@ class Solution(object):
             for j in range(i):
                 r[j] = r[j] + r[j + 1]
         return r
+
         
 # @lc code=end
 
