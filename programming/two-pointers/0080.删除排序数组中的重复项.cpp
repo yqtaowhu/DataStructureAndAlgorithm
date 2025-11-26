@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0026.删除排序数组中的重复项.cpp                               :+:      :+:    :+:   */
+/*   0080.删除排序数组中的重复项.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 17:55:30 by taoyanqi          #+#    #+#             */
-/*   Updated: 2025/10/27 17:55:31 by taoyanqi         ###   ########.fr       */
+/*   Created: 2025/11/26 12:47:06 by taoyanqi          #+#    #+#             */
+/*   Updated: 2025/11/26 12:47:24 by taoyanqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- * @lc app=leetcode.cn id=26 lang=cpp
- *
- * [26] 删除排序数组中的重复项
- */
-
-// @lc code=start
 class Solution {
 public:
-    // 双指针法，i,j快慢指针
+    // 同26题一起比较
     int removeDuplicates(vector<int>& nums) {
-       int len = nums.size();
-       if(len < 1) return len;
-       int i = 0;
-       for(int j =1; j < len; j++) {
-           if(nums[j] != nums[i]) {
-               nums[++i] = nums[j];
-           }
-       }
-       return i+1;
+        int size = nums.size();
+        if(size <= 2) return size;
+        int l = 2, r = 2;
+        while(r < size) {
+            // 只用这种方式避免了计数
+            if(nums[r] != nums[l-2]) {
+                nums[l++] = nums[r];
+            }
+            r++;
+        }
+        return l;
+        
     }
 };
-// @lc code=end
-
