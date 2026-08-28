@@ -10,45 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// 左闭右开的模板, 左闭右开模板要在最后判断合法性，因为right初始为m*n，所以要判断left < m * n
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        if(matrix.empty() || matrix[0].empty()) return false;
         int m = matrix.size(), n = matrix[0].size();
-        int left=0, right = m*n-1;
-        while(left <= right) {
-            int mid = (right-left) / 2 + left;
+        int left = 0, right = m * n;             // 一维总长度是 m*n
+        // 找到第一个大于等于 target 的值
+        while (left < right) {
+            int mid = left + (right - left) / 2;
             int r = mid / n, c = mid % n;
-            if(matrix[r][c] == target) {
-                return true;
-            } else if(matrix[r][c] < target) {
+            if (matrix[r][c] >= target) {
+                right = mid;
+            } else {
                 left = mid + 1;
-            } else {
-                right = mid - 1;
             }
         }
-        return false;
-        
-    }
-};
-
-class Solution {
-public:
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        // 注意判断一个矩阵为空的方法
-        if(matrix.empty() || matrix[0].empty()) return false;
-        int m = matrix.size(), n = matrix[0].size();
-        int i=0, j = m*n - 1;
-        // 使用模板二分，找左边界
-        while(i<j) {
-            int mid = (i+j) >> 1;
-            if(matrix[mid/n][mid%n] >= target) {
-                j = mid;        
-            } else {
-                i = mid+1;
-            }
-        }
-        return matrix[i/n][i%n] == target;    
+        // left == m*n 表示所有元素都 < target
+        return left < m * n && matrix[left / n][left % n] == target;
     }
 };
 
