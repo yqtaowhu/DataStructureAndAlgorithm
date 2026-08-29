@@ -97,6 +97,8 @@ int minAnswer(int lo, int hi) {
 | 1539. 第 k 个缺失的正整数 | 找第一个 nums[i] - i - 1 >= k 的边界 |
 | 1608. 特殊数组的特征值 | 枚举 + lower_bound 计数 |
 | 1287. 有序数组中出现次数超过25%的元素 | upper_bound - lower_bound 检查 |
+| [374. 猜数字大小](0374.猜数字大小.cpp) | 红蓝分界即 pick，check = `guess(mid) <= 0` |
+| [274. H 指数](0274.H指数.cpp) | 先排序，check = `citations[mid] >= n-mid`，答案 = n - 分界点 |
 
 ### 二、变形边界：单峰 / 旋转 / 特殊结构
 

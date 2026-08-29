@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   34.在排序数组中查找元素的第一个和最后一个位置.cpp                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: taoyanqi <taoyanqi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 17:28:35 by taoyanqi          #+#    #+#             */
-/*   Updated: 2025/10/24 17:28:36 by taoyanqi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 class Solution {
 public:
     int lower_bound(vector<int> &nums, int target) {
@@ -50,7 +38,8 @@ public:
             return {-1, -1}; // nums 中没有 target
         }
         // 如果 start 存在，那么 end 必定存在
-        int end = upper_bound(nums, target) - 1;
+        //int end = upper_bound(nums, target) - 1;
+        int end = lower_bound(nums, target+1)-1;
         return vector<int>{start, end};
     }
 };

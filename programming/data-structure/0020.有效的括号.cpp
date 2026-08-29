@@ -19,19 +19,22 @@
 // @lc code=start
 class Solution {
 public:
+    // 遇到左括号直接压入对应的右括号，遇到右括号只需判断是否与栈顶一致
     bool isValid(string s) {
         stack<char> st;
-        for(auto c: s) {
-            if(c == '(' || c == '[' || c == '{') {
-                st.push(c);
+        for(char c : s) {
+            if(c == '(') {
+                st.push(')');
+            } else if(c == '[') {
+                st.push(']');
+            } else if(c == '{') {
+                st.push('}');
             } else {
-                // 注意判断栈空
-                if(st.empty()) return false;
-                char t = st.top();
-                st.pop();
-                if((c == ')' &&  t != '(') || (c == ']' && t != '[')  || (c == '}' && t != '{')) {
+                // 注意判断栈空：右括号多干左括号的情况
+                if(st.empty() || st.top() != c) {
                     return false;
                 }
+                st.pop();
             }
         }
         return st.empty();

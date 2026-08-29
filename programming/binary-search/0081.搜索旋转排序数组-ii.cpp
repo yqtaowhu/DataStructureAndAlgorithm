@@ -10,39 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// 套模板解法（左闭右开 [left, right)，红蓝染色），同 33 题写法，仅多处理重复元素
+// 模板三句话：left < right；满足条件 right = mid；不满足 left = mid + 1
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-        int n = nums.size();
-        if(n == 0) return false;
-        if(n == 1) {
-            return nums[0] == target;
-        }
-        int l = 0, r = n - 1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (nums[mid] == target) {
-                return true;
-            }
-            // 注意重复的值，就这边不同
-            if (nums[l] == nums[mid] && nums[mid] == nums[r]) {
-                ++l;
-                --r;
-            } else if (nums[l] <= nums[mid]) {  // 不在是nums[0] <= nums[mid]
-                if (nums[l] <= target && target < nums[mid]) {
-                    r = mid - 1;
+        int left = 0, right = nums.size();   // 左闭右开
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) return true;
+            // 与 33 的差异一：区间起点会右移，判有序用 nums[left] 而不是 nums[0]
+            // 与 33 的差异二：重复元素无法判断哪半边有序，只能两端各收缩一格（该值必 ≠ target）
+            if (nums[left] == nums[mid] && nums[mid] == nums[right - 1]) {
+                ++left;
+                --right;
+            } else if (nums[left] <= nums[mid]) { // 左半 [left, mid] 有序
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid;        // 答案在左半
                 } else {
-                    l = mid + 1;
+                    left = mid + 1;     // 答案一定不在左半
                 }
-            } else {
-                if (nums[mid] < target && target <= nums[r]) {
-                    l = mid + 1;
+            } else { // 右半 (mid, right-1] 有序
+                if (nums[mid] < target && target <= nums[right - 1]) {
+                    left = mid + 1;
                 } else {
-                    r = mid - 1;
+                    right = mid;
                 }
             }
         }
         return false;
-        
     }
 };
