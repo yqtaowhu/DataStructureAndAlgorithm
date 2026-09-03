@@ -18,6 +18,6 @@ public:
         for(int k=i; k <=j; k++) {
             N &=  ~(1 << k);
         }
-        return N + (M << i);
+        return N | (M << i);
     }
 };

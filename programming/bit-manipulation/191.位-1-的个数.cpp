@@ -19,12 +19,13 @@
 // @lc code=start
 class Solution {
 public:
-    int hammingWeight(uint32_t n) {
+    int hammingWeight(int n) {
         int res = 0;
         while(n) {
             res++;
-            n &= (n-1);  // 通过n&(n-1),直接消除最右边的1
+            n &= n-1;
         }
+        // 一行版：__builtin_popcount(n);
         return res;
     }
     /*
