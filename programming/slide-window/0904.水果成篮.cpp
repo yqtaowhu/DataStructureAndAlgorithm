@@ -20,3 +20,25 @@ public:
         return ans;
     }
 };
+
+
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        // 最长的窗口，只有2个元素
+        unordered_map<int, int> map;
+        int left = 0, ans = 0;
+        for(int right=0; right < fruits.size(); right++) {
+            map[fruits[right]]++;
+            while(map.size() > 2) {
+                map[fruits[left]]--;
+                if(map[fruits[left]] == 0) {
+                    map.erase(fruits[left]);
+                }
+                left++;
+            }
+            ans = max(right-left+1, ans);
+        }
+        return ans;
+    }
+};

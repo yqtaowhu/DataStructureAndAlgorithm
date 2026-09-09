@@ -1,1 +1,12 @@
 README.md
+
+# 编译产物
+a.out
+*.out
+
+# 编辑器与插件缓存
+.vscode/
+.lcpr_data/
+
+# 本地临时验证文件
+test.cpp
