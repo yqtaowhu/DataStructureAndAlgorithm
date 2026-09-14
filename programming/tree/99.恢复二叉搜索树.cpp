@@ -43,5 +43,37 @@ public:
         swap(first->val, second->val);
     }
 };
+
+
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        stack<TreeNode*> st;
+        TreeNode* cur = root;
+        TreeNode* prev = nullptr;
+        TreeNode* first = nullptr;
+        TreeNode* second = nullptr;
+
+        while (cur || !st.empty()) {
+            // 一路压左链
+            while (cur) {
+                st.push(cur);
+                cur = cur->left;
+            }
+            cur = st.top(); st.pop();
+
+            // ===== 中序处理：找两个逆序对 =====
+            if (prev && prev->val > cur->val) {
+                if (!first) first = prev;   // 第一个逆序对的大值
+                second = cur;               // 第二个逆序对的小值（相邻时也会覆盖正确）
+            }
+            prev = cur;
+            // ================================
+
+            cur = cur->right;
+        }
+        swap(first->val, second->val);
+    }
+};
 // @lc code=end
 
