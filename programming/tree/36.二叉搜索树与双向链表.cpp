@@ -1,8 +1,4 @@
-# [二叉搜索树转双向链表](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
 
-
-
-```
 /*
 // Definition for a Node.
 class Node {
@@ -62,13 +58,7 @@ public:
        return head; 
     }
 };
-```
 
-## 解法二：模板方法（对应 [bst_template.md](bst_template.md) 模板 5：中序有序性应用骨架）
-
-中序递归骨架 + 引用参数 `prev` / `head`，避免类成员污染，函数可重入。
-
-```cpp
 class Solution2 {
 public:
     // 中序遍历骨架：改「处理」部分即可适配不同 BST 中序题
@@ -94,4 +84,3 @@ public:
         return head;
     }
 };
-```
