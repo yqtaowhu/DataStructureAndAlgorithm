@@ -27,13 +27,15 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
+    // 套路：档位 A —— 前缀最值 + 单变量增量维护
+    // 详见同目录《前缀最值增量维护模板.md》
     int maxValidPairSum(vector<int>& nums, int k) {
         // 1,3,5,2,8
         //     j     固定j， 找nums[i]的最大值， j每增加1， j-k的最大值也只是更新1个值，所以可以直接维护
         int ans = 0, mx = 0;
         for (int j = k; j < nums.size(); j++) {
-            mx = max(mx, nums[j - k]); // nums[i] 的最大值
-            ans = max(ans, mx + nums[j]);
+            mx = max(mx, nums[j - k]); // 进：nums[i] 的最大值
+            ans = max(ans, mx + nums[j]); // 算：更新答案
         }
         return ans;
     }
