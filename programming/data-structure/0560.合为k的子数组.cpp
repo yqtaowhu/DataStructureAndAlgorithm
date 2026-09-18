@@ -1,5 +1,6 @@
 
 // 普通方法就是直接遍历
+// 【模式一：计数型】本题是「前缀和 + 哈希表」家族的模板题，见 前缀和哈希表模板.md
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {

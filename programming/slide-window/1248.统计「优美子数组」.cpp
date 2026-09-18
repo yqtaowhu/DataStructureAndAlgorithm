@@ -31,6 +31,20 @@ public:
         }
         return number;
     }
+
+    // ===== 模板版：前缀和 + 哈希表（见 data-structure/前缀和哈希表模板.md · 模式一）=====
+    // 把奇数记 1、偶数记 0，问题变成「和为 k 的子数组个数」，与 560 完全同构。
+    // 相比上面的「奇数下标计数」法，这个写法更短、也更好推广到其它计数型题。
+    int numberOfSubarraysByPrefix(vector<int>& nums, int k) {
+        unordered_map<int, int> cnt{{0, 1}}; // 前缀中奇数的个数 -> 出现次数
+        int ans = 0, s = 0;
+        for (int x : nums) {
+            s += x & 1;                                 // 奇数 +1，偶数 +0
+            ans += cnt.count(s - k) ? cnt[s - k] : 0;   // 先查
+            cnt[s]++;                                   // 后插
+        }
+        return ans;
+    }
 };
 // @lc code=end
 

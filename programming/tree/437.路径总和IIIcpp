@@ -42,6 +42,7 @@ public:
 
 
 // 前缀和的解法
+// 【模式三：树上 DFS + 回溯撤销】见 ../data-structure/前缀和哈希表模板.md
 class Solution {
 public:
     unordered_map<long long, int> prefix;

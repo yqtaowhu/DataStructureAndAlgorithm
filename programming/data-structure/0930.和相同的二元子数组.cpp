@@ -9,19 +9,19 @@
 /*   Updated: 2025/09/22 12:35:02 by taoyanqi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 class Solution {
 public:
-    // 前缀和 & 哈希表, 两数之和
     int numSubarraysWithSum(vector<int>& nums, int goal) {
-        int sum = 0;
-        unordered_map<int, int> cnt;
-        int ret = 0;
-        for (auto& num : nums) {
-            cnt[sum]++;
-            sum += num;
-            ret += cnt[sum - goal];
+        // 1 0 1 0 1
+        // 0:1 1 : 1 2 : 1
+        unordered_map<int, int> hash;
+        int ans = 0, s = 0;
+        for(auto x : nums) {
+            hash[s]++;
+            s += x;
+            ans += hash.count(s-goal) ? hash[s-goal] : 0;
         }
-        return ret;
+        return ans;
+        
     }
 };

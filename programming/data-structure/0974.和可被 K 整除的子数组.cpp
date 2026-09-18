@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// 【前缀和 + 哈希表 · 模式一：计数型（mod k 版）】见 前缀和哈希表模板.md
 class Solution {
 public:
     int subarraysDivByK(vector<int>& nums, int k) {

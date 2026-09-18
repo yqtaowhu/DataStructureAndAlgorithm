@@ -29,4 +29,20 @@ public:
         }
         return subarrays;
     }
+
+    // ===== 模板版：前缀和 + 哈希表（见 前缀和哈希表模板.md · 模式一）=====
+    // 前缀和只保留奇偶(mod 2)：子数组和为奇 <=> 两端前缀奇偶不同。
+    // 于是对当前奇偶 s，累加历史中奇偶为 s^1 的前缀个数——就是计数型模板。
+    // 上面的 odd/even 双变量，其实是这个哈希表在「只有 0/1 两种余数」下的特化。
+    int numOfSubarraysByPrefix(vector<int>& arr) {
+        const int MOD = 1000000007;
+        unordered_map<int, int> cnt{{0, 1}}; // 前缀和奇偶(0/1) -> 出现次数
+        int ans = 0, s = 0;
+        for (int x : arr) {
+            s = (s + x) & 1;                 // 只保留奇偶
+            ans = (ans + cnt[s ^ 1]) % MOD;  // 和为奇数 <=> 两端奇偶不同
+            cnt[s]++;
+        }
+        return ans;
+    }
 };
